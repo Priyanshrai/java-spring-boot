@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}">
+
+
     <title>Hello World</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <div class="container">
+        <h1 class="text-center">Todo List</h1>
+        <hr />
+        <table class="table table-bordered table-striped" >
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Description</th>
+                <th scope="col">Complete</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Modified Date</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${todoItems}">
+                    <td th:text = "${item.id}">item_id</td>
+                    <td th:text = "${item.description}">item_description</td>
+                    <td th:text = "${item.complete}">item_complete</td>
+                    <td th:text = "${item.createdDate}">item_created_date</td>
+                    <td th:text = "${item.modifiedDate}">item_modified_date</td>
+                </tr> 
+            </tbody>
+            </table>
+
+    </div>
+
+
+
+     <!-- Include jQuery script -->
+     <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    
+     <!-- Include Bootstrap JS (Make sure to include jQuery first) -->
+     <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+ 
 </body>
 </html>
